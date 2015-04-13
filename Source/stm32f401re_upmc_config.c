@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file    Pstl/Source/stm32f401re_upmc_config.c 
-  * @author  Master1 Team
+  * @author  Adel LARBI (adel.larbi@etu.upmc.fr)
   * @version V1.0.0
   * @date    ??-December-2015
   * @brief   ???
@@ -27,39 +27,52 @@ void enableClock(uint16_t GPIO_Pin) {
 
 	switch (GPIO_Pin) {
 
-		case GPIO_PIN_0 :
-		case GPIO_PIN_1 :
-		case GPIO_PIN_2 :
-		case GPIO_PIN_3 :
-		case GPIO_PIN_4 : {
-			__GPIOB_CLK_ENABLE(); // NOT B; to check!
-			break;
-		}
-		
-		case LED2_PIN : {
+		case D0 : 
+		case D1 : 
+		case D2 : {
 			__GPIOA_CLK_ENABLE();
 			break;
 		}
 
-		case GPIO_PIN_6 :
-		case GPIO_PIN_7 :
-		case GPIO_PIN_8 :
-		case GPIO_PIN_9 :
-		case GPIO_PIN_10 :
-		case GPIO_PIN_11 :
-		case GPIO_PIN_12 : {
-			__GPIOB_CLK_ENABLE(); // NOT B; to check!
+		case D3 :
+		case D4 :
+		case D5 : 
+		case D6 : {
+			__GPIOB_CLK_ENABLE();
+			break;
+		}		
+		
+		case D7 : 
+		case D8 : {
+			__GPIOA_CLK_ENABLE();
 			break;
 		}
+
+		case D9 : {
+			__GPIOC_CLK_ENABLE();
+			break;
+		}		
+
+		case D10 : {
+			__GPIOB_CLK_ENABLE();
+			break;
+		}		
+
+		case D11 :
+		case D12 :
+		case D13 : {
+			__GPIOA_CLK_ENABLE();
+			break;
+		}		
 
 		case USER_BUTTON_PIN : {
 			__GPIOC_CLK_ENABLE();
 			break;
 		}
 
-		case GPIO_PIN_14 :
-		case GPIO_PIN_15 : {
-			__GPIOB_CLK_ENABLE(); // NOT B; to check!
+		case D14 :
+		case D15 : {
+			__GPIOB_CLK_ENABLE();
 			break;
 		}
 	}	
