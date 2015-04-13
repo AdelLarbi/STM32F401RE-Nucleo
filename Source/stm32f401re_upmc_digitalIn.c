@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file    Pstl/Source/stm32f401re_upmc_digitalIn.c 
-  * @author  Master1 Team
+  * @author  Adel LARBI (adel.larbi@etu.upmc.fr)
   * @version V1.0.0
   * @date    ??-December-2015
   * @brief   ???
@@ -53,39 +53,43 @@ void initialiseStruct(uint16_t GPIO_Pin) {
 	
 	switch (GPIO_Pin) {
 
-		case GPIO_PIN_0 :
-		case GPIO_PIN_1 :
-		case GPIO_PIN_2 :
-		case GPIO_PIN_3 :
-		case GPIO_PIN_4 : {
-			HAL_GPIO_Init(GPIOB, &GPIO_InitStruct); // NOT GPIOB; to check!
-			break;
-		}
-		
-		case LED2_PIN : {
+		switch (GPIO_Pin) {
+
+		case D0_PIN : 
+		case D1_PIN : 
+		case D2_PIN :
+		case D7_PIN : 
+		case D8_PIN : 
+		case D11_PIN :
+		case D12_PIN :
+		case D13_PIN : 
+		case A0_PIN : 
+		case A1_PIN : 
+		case A2_PIN : {			
 			HAL_GPIO_Init(GPIOA, &GPIO_InitStruct); 
 			break;
 		}
 
-		case GPIO_PIN_6 :
-		case GPIO_PIN_7 :
-		case GPIO_PIN_8 :
-		case GPIO_PIN_9 :
-		case GPIO_PIN_10 :
-		case GPIO_PIN_11 :
-		case GPIO_PIN_12 : {
-			HAL_GPIO_Init(GPIOB, &GPIO_InitStruct); // NOT GPIOB; to check!
+		case D3_PIN :
+		case D4_PIN :
+		case D5_PIN : 
+		case D6_PIN : 
+		case D10_PIN : 
+		case D14_PIN :
+		case D15_PIN : 
+		case A3_PIN : 
+		/* ou 
+		case A4_PIN :
+		case A5_PIN : */ {			
+			HAL_GPIO_Init(GPIOB, &GPIO_InitStruct); 
 			break;
-		}
-
+		}		
+		
+		case D9_PIN : 
+		case A4_PIN :
+		case A5_PIN : 
 		case USER_BUTTON_PIN : {
-			HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-			break;
-		}
-
-		case GPIO_PIN_14 :
-		case GPIO_PIN_15 : {
-			HAL_GPIO_Init(GPIOB, &GPIO_InitStruct); // NOT GPIOB; to check!
+			HAL_GPIO_Init(GPIOC, &GPIO_InitStruct); 
 			break;
 		}
 	}		
@@ -102,37 +106,42 @@ GPIO_PinState isActive(uint16_t GPIO_Pin) {
 
 	switch (GPIO_Pin) {
 
-		case GPIO_PIN_0 :
-		case GPIO_PIN_1 :
-		case GPIO_PIN_2 :
-		case GPIO_PIN_3 :
-		case GPIO_PIN_4 : {
-			return !HAL_GPIO_ReadPin(GPIOB, GPIO_Pin); // NOT GPIOB; to check!
+		switch (GPIO_Pin) {
+
+		case D0_PIN : 
+		case D1_PIN : 
+		case D2_PIN :
+		case D7_PIN : 
+		case D8_PIN : 
+		case D11_PIN :
+		case D12_PIN :
+		case D13_PIN : 
+		case A0_PIN : 
+		case A1_PIN : 
+		case A2_PIN : {
+			return !HAL_GPIO_ReadPin(GPIOA, GPIO_Pin);						
 		}
+
+		case D3_PIN :
+		case D4_PIN :
+		case D5_PIN : 
+		case D6_PIN : 
+		case D10_PIN : 
+		case D14_PIN :
+		case D15_PIN : 
+		case A3_PIN : 
+		/* ou 
+		case A4_PIN :
+		case A5_PIN : */ {
+			return !HAL_GPIO_ReadPin(GPIOB, GPIO_Pin);			
+		}		
 		
-		case LED2_PIN : {
-			return !HAL_GPIO_ReadPin(GPIOA, GPIO_Pin);
-		}
-
-		case GPIO_PIN_6 :
-		case GPIO_PIN_7 :
-		case GPIO_PIN_8 :
-		case GPIO_PIN_9 :
-		case GPIO_PIN_10 :
-		case GPIO_PIN_11 :
-		case GPIO_PIN_12 : {
-			return !HAL_GPIO_ReadPin(GPIOB, GPIO_Pin); // NOT GPIOB; to check!
-		}
-
+		case D9_PIN : 
+		case A4_PIN :
+		case A5_PIN : 
 		case USER_BUTTON_PIN : {
-			return !HAL_GPIO_ReadPin(GPIOC, GPIO_Pin);
-		}
-
-		case GPIO_PIN_14 :
-		case GPIO_PIN_15 : {
-			return !HAL_GPIO_ReadPin(GPIOB, GPIO_Pin); // NOT GPIOB; to check!
-		}	
-	}	
+			return !HAL_GPIO_ReadPin(GPIOC, GPIO_Pin);			
+		}		
 
 	return 0;
 }

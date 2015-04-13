@@ -27,52 +27,78 @@ void enableClock(uint16_t GPIO_Pin) {
 
 	switch (GPIO_Pin) {
 
-		case D0 : 
-		case D1 : 
-		case D2 : {
+		case D0_PIN : 
+		case D1_PIN : 
+		case D2_PIN : {
 			__GPIOA_CLK_ENABLE();
 			break;
 		}
 
-		case D3 :
-		case D4 :
-		case D5 : 
-		case D6 : {
+		case D3_PIN :
+		case D4_PIN :
+		case D5_PIN : 
+		case D6_PIN : {
 			__GPIOB_CLK_ENABLE();
 			break;
 		}		
 		
-		case D7 : 
-		case D8 : {
+		case D7_PIN : 
+		case D8_PIN : {
 			__GPIOA_CLK_ENABLE();
 			break;
 		}
 
-		case D9 : {
+		case D9_PIN : {
 			__GPIOC_CLK_ENABLE();
 			break;
 		}		
 
-		case D10 : {
+		case D10_PIN : {
 			__GPIOB_CLK_ENABLE();
 			break;
 		}		
 
-		case D11 :
-		case D12 :
-		case D13 : {
+		case D11_PIN :
+		case D12_PIN :
+		case D13_PIN : {
 			__GPIOA_CLK_ENABLE();
 			break;
+		}				
+
+		case D14_PIN :
+		case D15_PIN : {
+			__GPIOB_CLK_ENABLE();
+			break;
+		}
+
+		case A0_PIN : 
+		case A1_PIN : 
+		case A2_PIN : {
+			__GPIOA_CLK_ENABLE();
+			break;
+		}
+
+		case A3_PIN : {
+			__GPIOB_CLK_ENABLE();
+			break;
 		}		
+		
+		case A4_PIN :
+		case A5_PIN : {
+			__GPIOC_CLK_ENABLE();
+			break;
+		}
+
+		/* ou
+		case A4_PIN :
+		case A5_PIN : {
+			__GPIOB_CLK_ENABLE();
+			break;
+		}
+		*/		
 
 		case USER_BUTTON_PIN : {
 			__GPIOC_CLK_ENABLE();
-			break;
-		}
-
-		case D14 :
-		case D15 : {
-			__GPIOB_CLK_ENABLE();
 			break;
 		}
 	}	

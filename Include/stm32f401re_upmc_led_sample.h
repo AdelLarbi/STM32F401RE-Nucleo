@@ -24,6 +24,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f401re_upmc_digitalIn.h"
 
+/* Exported macro ------------------------------------------------------------*/
+#define LED2_PIN  GPIO_PIN_5
+#define LED2_PORT GPIOA
+
 /* Exported functions ------------------------------------------------------- */
 void configureLed2Pin();
 void createLed2Struct();

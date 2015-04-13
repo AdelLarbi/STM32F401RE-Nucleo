@@ -27,14 +27,64 @@
 #include "stm32f4xx_it.h"
 
 /* Exported macro ------------------------------------------------------------*/
-#define USER_BUTTON_PIN	   GPIO_PIN_13
-#define USER_BUTTON_PORT   GPIOC
+// Digital Pin names
+#define   D0_PIN   GPIO_PIN_3
+#define   D1_PIN   GPIO_PIN_2
+#define   D2_PIN   GPIO_PIN_10
+#define   D3_PIN   GPIO_PIN_3
+#define   D4_PIN   GPIO_PIN_5
+#define   D5_PIN   GPIO_PIN_4
+#define   D6_PIN   GPIO_PIN_10
+#define   D7_PIN   GPIO_PIN_8
+#define   D8_PIN   GPIO_PIN_9
+#define   D9_PIN   GPIO_PIN_7
+#define   D10_PIN  GPIO_PIN_6
+#define   D11_PIN  GPIO_PIN_7
+#define   D12_PIN  GPIO_PIN_6
+#define   D13_PIN  GPIO_PIN_5
+#define   D14_PIN  GPIO_PIN_9
+#define   D15_PIN  GPIO_PIN_8
 
-#define LED2_PIN	  GPIO_PIN_5
-#define LED2_PORT   GPIOA 
+// Digital Pin ports
+#define   D0_PORT   GPIOA
+#define   D1_PORT   GPIOA
+#define   D2_PORT   GPIOA
+#define   D3_PORT   GPIOB
+#define   D4_PORT   GPIOB
+#define   D5_PORT   GPIOB
+#define   D6_PORT   GPIOB
+#define   D7_PORT   GPIOA
+#define   D8_PORT   GPIOA
+#define   D9_PORT   GPIOC
+#define   D10_PORT  GPIOB
+#define   D11_PORT  GPIOA
+#define   D12_PORT  GPIOA
+#define   D13_PORT  GPIOA
+#define   D14_PORT  GPIOB
+#define   D15_PORT  GPIOB
 
-#define false   0
-#define true    1
+// Analog Pin names
+#define   A0_PIN   GPIO_PIN_0
+#define   A1_PIN   GPIO_PIN_1
+#define   A2_PIN   GPIO_PIN_4
+#define   A3_PIN   GPIO_PIN_0
+#define   A4_PIN   GPIO_PIN_1 //ou GPIO_PIN_9
+#define   A5_PIN   GPIO_PIN_0 //ou GPIO_PIN_8
+
+// Analog Pin ports
+#define   A0_PORT   GPIOA
+#define   A1_PORT   GPIOA
+#define   A2_PORT   GPIOA
+#define   A3_PORT   GPIOB
+#define   A4_PORT   GPIOC //ou GPIOB
+#define   A5_PORT   GPIOC //ou GPIOB
+
+// Blue button pin and port
+#define   USER_BUTTON_PIN	   GPIO_PIN_13
+#define   USER_BUTTON_PORT   GPIOC
+
+#define   false   0
+#define   true    1
 
 /* Exported functions ------------------------------------------------------- */
 void enableClock(uint16_t GPIO_Pin);
