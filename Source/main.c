@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file    Pstl/Source/main.c 
+  * @file    Pstl/Source/main.c
   * @author  Master1 Team
   * @version V1.0.0
   * @date    ??-April-2015
-  * @brief   This example describes how to use digital-in through the 
+  * @brief   This example describes how to use digital-in through the
   *          STM32F4xx_HAL API and the STM32F401RE_UMPC library.
   ******************************************************************************
   * @attention
@@ -26,12 +26,12 @@
   * @retval None
   */
 int main(void) {
-		
-	configureLed2Pin();    
-    initDigitalIn(USER_BUTTON_PIN);
+
+		configureLed2Pin();
+    initDigitalIn(USER_BUTTON_PIN);		
 
 	while (true) {
-		if (isActive(USER_BUTTON_PIN)) {								  			
+		if (isActive(USER_BUTTON_PIN)) {
 			turnOnLed2();
 		} else {
 			turnOffLed2();
@@ -68,14 +68,14 @@ int main(void) {
 #include "stm32f401re_upmc_led_sample.h"
 
 int main(void) {
-		
-	configureLed2Pin();    
+
+	configureLed2Pin();
     configurePin(USER_BUTTON_PIN);
 
 	int count = 0;
-		
+
 	while (true) {
-		if (isActive(USER_BUTTON_PIN)) {								  						
+		if (isActive(USER_BUTTON_PIN)) {
 			if (count%5000000 == 0) { turnOffLed2(); count = 0; }
 			if (count%5000000 == 250000) { turnOnLed2(); }
 			if (count%5000000 == 300000) { turnOffLed2(); }
@@ -133,11 +133,11 @@ int main(void) {
 #include "stm32f401re_upmc_analogIn.h"
 
 int main(void) {
-			
+
     initAnalogIn(GPIO_PIN_7);
 
 	while (true) {
-		if (read(GPIO_PIN_7) > 0.5) {								  			
+		if (read(GPIO_PIN_7) > 0.5) {
 			// do something..
 		}
 	}
