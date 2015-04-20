@@ -26,24 +26,61 @@
 #include "stm32f4xx_hal_rcc.h"
 #include "stm32f4xx_it.h"
 
+/* Exported types ------------------------------------------------------------*/
+typedef enum {
+  
+  D0_PIN = GPIO_PIN_3,
+  D1_PIN = GPIO_PIN_2,
+  D2_PIN = GPIO_PIN_10,
+  D3_PIN = GPIO_PIN_3,
+  D4_PIN = GPIO_PIN_5,
+  D5_PIN = GPIO_PIN_4,
+  D6_PIN = GPIO_PIN_10,
+  D7_PIN = GPIO_PIN_8,
+  D8_PIN = GPIO_PIN_9,
+  D9_PIN = GPIO_PIN_7,
+  D10_PIN = GPIO_PIN_6,
+  D11_PIN = GPIO_PIN_7,
+  D12_PIN = GPIO_PIN_6,
+  D13_PIN = GPIO_PIN_5,
+  D14_PIN = GPIO_PIN_9,
+  D15_PIN = GPIO_PIN_8  
+
+} Digital_TypeDef;
+
+
+typedef enum {
+  
+  LED2 = GPIO_PIN_5
+
+} Led_TypeDef;
+
+typedef enum {  
+  
+  BUTTON_KEY = GPIO_PIN_13
+
+} Button_TypeDef;
+
+/* Exported constants --------------------------------------------------------*/
+
 /* Exported macro ------------------------------------------------------------*/
 // Digital Pin names
 #define   D0_PIN   GPIO_PIN_3
 #define   D1_PIN   GPIO_PIN_2
 #define   D2_PIN   GPIO_PIN_10
-#define   D3_PIN   D0_PIN //GPIO_PIN_3
+//#define   D3_PIN   D0_PIN //GPIO_PIN_3
 #define   D4_PIN   GPIO_PIN_5
 #define   D5_PIN   GPIO_PIN_4
-#define   D6_PIN   D2_PIN //GPIO_PIN_10
+//#define   D6_PIN   D2_PIN //GPIO_PIN_10
 #define   D7_PIN   GPIO_PIN_8
 #define   D8_PIN   GPIO_PIN_9
 #define   D9_PIN   GPIO_PIN_7
 #define   D10_PIN  GPIO_PIN_6
-#define   D11_PIN  D9_PIN //GPIO_PIN_7
-#define   D12_PIN  D10_PIN //GPIO_PIN_6
-#define   D13_PIN  D4_PIN //GPIO_PIN_5
-#define   D14_PIN  D8_PIN //GPIO_PIN_9
-#define   D15_PIN  D7_PIN //GPIO_PIN_8
+//#define   D11_PIN  D9_PIN //GPIO_PIN_7
+//#define   D12_PIN  D10_PIN //GPIO_PIN_6
+//#define   D13_PIN  D4_PIN //GPIO_PIN_5
+//#define   D14_PIN  D8_PIN //GPIO_PIN_9
+//#define   D15_PIN  D7_PIN //GPIO_PIN_8
 
 // Digital Pin ports
 /*#define   D0_PORT   GPIOA

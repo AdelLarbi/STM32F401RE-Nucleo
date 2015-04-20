@@ -49,13 +49,11 @@ void createStruct(uint16_t GPIO_Pin) {
   * 			  PINx, USER_BUTTON or ALLPIN, where x[0..15].
   * @retval ...
   */
-void initialiseStruct(uint16_t GPIO_Pin) {
-	
+void initialiseStruct(uint16_t GPIO_Pin) {		
+
 	switch (GPIO_Pin) {
 
-		switch (GPIO_Pin) {
-
-		case D0_PIN : 
+		/*case D0_PIN : 
 		case D1_PIN : 
 		case D2_PIN :
 		case D7_PIN : 
@@ -64,19 +62,19 @@ void initialiseStruct(uint16_t GPIO_Pin) {
 		case D12_PIN :
 		case D13_PIN : 
 		case A0_PIN : 
-		case A1_PIN : 
+		case A1_PIN : */
 		case A2_PIN : {			
 			HAL_GPIO_Init(GPIOA, &GPIO_InitStruct); 
 			break;
 		}
 
-		case D3_PIN :
+		/*case D3_PIN :
 		case D4_PIN :
 		case D5_PIN : 
 		case D6_PIN : 
 		case D10_PIN : 
 		case D14_PIN :
-		case D15_PIN : 
+		case D15_PIN : */
 		case A3_PIN : 
 		/* ou 
 		case A4_PIN :
@@ -85,9 +83,9 @@ void initialiseStruct(uint16_t GPIO_Pin) {
 			break;
 		}		
 		
-		case D9_PIN : 
+		/*case D9_PIN : 
 		case A4_PIN :
-		case A5_PIN : 
+		case A5_PIN : */
 		case USER_BUTTON_PIN : {
 			HAL_GPIO_Init(GPIOC, &GPIO_InitStruct); 
 			break;
@@ -106,9 +104,7 @@ GPIO_PinState isActive(uint16_t GPIO_Pin) {
 
 	switch (GPIO_Pin) {
 
-		switch (GPIO_Pin) {
-
-		case D0_PIN : 
+		/*case D0_PIN : 
 		case D1_PIN : 
 		case D2_PIN :
 		case D7_PIN : 
@@ -117,18 +113,18 @@ GPIO_PinState isActive(uint16_t GPIO_Pin) {
 		case D12_PIN :
 		case D13_PIN : 
 		case A0_PIN : 
-		case A1_PIN : 
+		case A1_PIN : */
 		case A2_PIN : {
 			return !HAL_GPIO_ReadPin(GPIOA, GPIO_Pin);						
 		}
 
-		case D3_PIN :
+		/*case D3_PIN :
 		case D4_PIN :
 		case D5_PIN : 
 		case D6_PIN : 
 		case D10_PIN : 
 		case D14_PIN :
-		case D15_PIN : 
+		case D15_PIN : */
 		case A3_PIN : 
 		/* ou 
 		case A4_PIN :
@@ -136,13 +132,13 @@ GPIO_PinState isActive(uint16_t GPIO_Pin) {
 			return !HAL_GPIO_ReadPin(GPIOB, GPIO_Pin);			
 		}		
 		
-		case D9_PIN : 
+		/*case D9_PIN : 
 		case A4_PIN :
-		case A5_PIN : 
+		case A5_PIN : */
 		case USER_BUTTON_PIN : {
 			return !HAL_GPIO_ReadPin(GPIOC, GPIO_Pin);			
 		}		
-
+	}
 	return 0;
 }
 

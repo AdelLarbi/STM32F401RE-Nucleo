@@ -25,7 +25,7 @@
   */
 void enableClock(uint16_t GPIO_Pin) {
 
-	switch (GPIO_Pin) {
+	/*switch (GPIO_Pin) {
 
 		case D0_PIN : 
 		case D1_PIN : 
@@ -87,7 +87,7 @@ void enableClock(uint16_t GPIO_Pin) {
 		case A5_PIN : {
 			__GPIOC_CLK_ENABLE();
 			break;
-		}
+		}*/
 
 		/* ou
 		case A4_PIN :
@@ -97,11 +97,11 @@ void enableClock(uint16_t GPIO_Pin) {
 		}
 		*/		
 
-		case USER_BUTTON_PIN : {
+		/*case USER_BUTTON_PIN : {
 			__GPIOC_CLK_ENABLE();
 			break;
-		}
-	}	
+		}*/
+}	
 
 /**
   * @brief  ...
@@ -134,7 +134,7 @@ GPIO_TypeDef *getPort(uint16_t GPIO_Pin) {
 		case D10_PIN : 
 		case D14_PIN :
 		case D15_PIN : 
-		case A3_PIN : 
+		case A3_PIN : */
 		/* ou 
 		case A4_PIN :
 		case A5_PIN : */ /*{
@@ -148,7 +148,6 @@ GPIO_TypeDef *getPort(uint16_t GPIO_Pin) {
 			return GPIOC;
 		}		
 	}
-*/
-}
+}*/
 
 /************************ (C) COPYRIGHT UPMC *******************END OF FILE****/
