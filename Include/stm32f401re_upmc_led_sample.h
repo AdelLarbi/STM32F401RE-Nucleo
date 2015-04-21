@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
   * @file    Pstl/Include/stm32f401re_upmc_led_sample.h 
-  * @author  Master1 Team
+  * @author  Adel LARBI (adel.larbi@etu.upmc.fr)
   * @version V1.0.0
   * @date    ??-April-2015
-  * @brief   Custom config for ???.c module
+  * @brief   Custom config for stm32f401re_upmc_led_sample.c module
   ******************************************************************************
   * @attention
   *
@@ -22,18 +22,24 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f401re_upmc_digitalIn.h"
+#include "stm32f4xx_hal_gpio.h"
+#include "stm32f4xx_hal_rcc.h"
+
+/* Exported types ------------------------------------------------------------*/
+GPIO_InitTypeDef LED2_InitStruct;
 
 /* Exported macro ------------------------------------------------------------*/
 #define LED2_PIN  GPIO_PIN_5
 #define LED2_PORT GPIOA
 
 /* Exported functions ------------------------------------------------------- */
-void configureLed2Pin();
-void createLed2Struct();
-void initialiseLed2Struct();
-void turnOnLed2();
-void turnOffLed2();
+void configureLed2Pin(void);
+void enableLed2Clock(void);
+void createLed2Struct(void);
+void initialiseLed2Struct(void);
+
+void turnOnLed2(void);
+void turnOffLed2(void);
 
 #ifdef __cplusplus
 }

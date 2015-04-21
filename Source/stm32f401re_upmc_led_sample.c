@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
   * @file    Pstl/Source/stm32f401re_upmc_led_sample.c 
-  * @author  Master1 Team
+  * @author  Adel LARBI (adel.larbi@etu.upmc.fr)
   * @version V1.0.0
   * @date    ??-December-2015
-  * @brief   ???
+  * @brief   Implementation of stm32f401re_upmc_led_sample.h
   ******************************************************************************
   * @attention
   *
@@ -15,18 +15,27 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f401re_upmc_led_sample.h"
-
-/* Private functions ---------------------------------------------------------*/
-
 /**
   * @brief  ...
   * @param  ...
   * @retval ...
   */
-void configureLed2Pin() {
-	enableClock(LED2_PIN);	
+void configureLed2Pin(void) 
+{
+	enableLed2Clock();	
 	createLed2Struct();
 	initialiseLed2Struct();
+}
+
+/* Private functions ---------------------------------------------------------*/
+/**
+  * @brief  ...
+  * @param  ...
+  * @retval ...
+  */
+void enableLed2Clock(void) 
+{
+  __GPIOA_CLK_ENABLE();
 }
 
 /**
@@ -34,11 +43,12 @@ void configureLed2Pin() {
   * @param  ...
   * @retval ...
   */	
-void createLed2Struct() {
-	GPIO_InitStruct.Pin   = LED2_PIN;
-    GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
-    GPIO_InitStruct.Pull  = GPIO_PULLUP;
-    GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;	 
+void createLed2Struct(void) 
+{
+	LED2_InitStruct.Pin   = LED2_PIN;
+  LED2_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
+  LED2_InitStruct.Pull  = GPIO_PULLUP;
+  LED2_InitStruct.Speed = GPIO_SPEED_HIGH;	 
 }			
 
 /**
@@ -46,8 +56,9 @@ void createLed2Struct() {
   * @param  ...
   * @retval ...
   */
-void initialiseLed2Struct() {
-	HAL_GPIO_Init(LED2_PORT, &GPIO_InitStruct);
+void initialiseLed2Struct(void) 
+{
+	HAL_GPIO_Init(LED2_PORT, &LED2_InitStruct);
 }
 
 
@@ -56,7 +67,8 @@ void initialiseLed2Struct() {
   * @param  ...
   * @retval ...
   */
-void turnOnLed2() {
+void turnOnLed2(void) 
+{
 	HAL_GPIO_WritePin(LED2_PORT, LED2_PIN, GPIO_PIN_SET);
 }
 
@@ -65,7 +77,8 @@ void turnOnLed2() {
   * @param  ...
   * @retval ...
   */
-void turnOffLed2() {
+void turnOffLed2(void) 
+{
 	HAL_GPIO_WritePin(LED2_PORT, LED2_PIN, GPIO_PIN_RESET);
 }
 
