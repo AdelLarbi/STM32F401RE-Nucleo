@@ -17,7 +17,6 @@
 #include "stm32f401re_upmc_config.h"
 
 /* Private functions ---------------------------------------------------------*/
-
 /**
   * @brief  ...
   * @param  ...

@@ -28,44 +28,49 @@
 
 /* Exported types ------------------------------------------------------------*/
 typedef enum {
-  
-  D0_PIN = GPIO_PIN_3,
-  D1_PIN = GPIO_PIN_2,
-  D2_PIN = GPIO_PIN_10,
-  D3_PIN = GPIO_PIN_3,
-  D4_PIN = GPIO_PIN_5,
-  D5_PIN = GPIO_PIN_4,
-  D6_PIN = GPIO_PIN_10,
-  D7_PIN = GPIO_PIN_8,
-  D8_PIN = GPIO_PIN_9,
-  D9_PIN = GPIO_PIN_7,
-  D10_PIN = GPIO_PIN_6,
-  D11_PIN = GPIO_PIN_7,
-  D12_PIN = GPIO_PIN_6,
-  D13_PIN = GPIO_PIN_5,
-  D14_PIN = GPIO_PIN_9,
-  D15_PIN = GPIO_PIN_8  
-
+  D0_PIN   =  GPIO_PIN_3,
+  D1_PIN   =  GPIO_PIN_2,
+  D2_PIN   =  GPIO_PIN_10,
+  D3_PIN   =  GPIO_PIN_3,
+  D4_PIN   =  GPIO_PIN_5,
+  D5_PIN   =  GPIO_PIN_4,
+  D6_PIN   =  GPIO_PIN_10,
+  D7_PIN   =  GPIO_PIN_8,
+  D8_PIN   =  GPIO_PIN_9,
+  D9_PIN   =  GPIO_PIN_7,
+  D10_PIN  =  GPIO_PIN_6,
+  D11_PIN  =  GPIO_PIN_7,
+  D12_PIN  =  GPIO_PIN_6,
+  D13_PIN  =  GPIO_PIN_5,
+  D14_PIN  =  GPIO_PIN_9,
+  D15_PIN  =  GPIO_PIN_8  
 } Digital_TypeDef;
 
 
 typedef enum {
-  
-  LED2 = GPIO_PIN_5
+  A0_PIN  =  GPIO_PIN_0,
+  A1_PIN  =  GPIO_PIN_1,
+  A2_PIN  =  GPIO_PIN_4,
+  A3_PIN  =  GPIO_PIN_0,
+  A4_PIN  =  GPIO_PIN_1, //ou GPIO_PIN_9
+  A5_PIN  =  GPIO_PIN_0 //ou GPIO_PIN_8
+} Analog_TypeDef;  
 
+
+typedef enum {
+  LED2  =  GPIO_PIN_5
 } Led_TypeDef;
 
-typedef enum {  
-  
-  BUTTON_KEY = GPIO_PIN_13
 
+typedef enum {  
+  BUTTON_KEY  =  GPIO_PIN_13
 } Button_TypeDef;
 
 /* Exported constants --------------------------------------------------------*/
 
 /* Exported macro ------------------------------------------------------------*/
 // Digital Pin names
-#define   D0_PIN   GPIO_PIN_3
+/*#define   D0_PIN   GPIO_PIN_3
 #define   D1_PIN   GPIO_PIN_2
 #define   D2_PIN   GPIO_PIN_10
 //#define   D3_PIN   D0_PIN //GPIO_PIN_3
@@ -80,7 +85,7 @@ typedef enum {
 //#define   D12_PIN  D10_PIN //GPIO_PIN_6
 //#define   D13_PIN  D4_PIN //GPIO_PIN_5
 //#define   D14_PIN  D8_PIN //GPIO_PIN_9
-//#define   D15_PIN  D7_PIN //GPIO_PIN_8
+//#define   D15_PIN  D7_PIN //GPIO_PIN_8*/
 
 // Digital Pin ports
 /*#define   D0_PORT   GPIOA
@@ -101,12 +106,12 @@ typedef enum {
 #define   D15_PORT  GPIOB*/
 
 // Analog Pin names
-#define   A0_PIN   GPIO_PIN_0
+/*#define   A0_PIN   GPIO_PIN_0
 #define   A1_PIN   GPIO_PIN_1
 #define   A2_PIN   GPIO_PIN_4
 #define   A3_PIN   A0_PIN //GPIO_PIN_0
 #define   A4_PIN   A1_PIN //GPIO_PIN_1 //ou GPIO_PIN_9
-#define   A5_PIN   A3_PIN //GPIO_PIN_0 //ou GPIO_PIN_8
+#define   A5_PIN   A3_PIN //GPIO_PIN_0 //ou GPIO_PIN_8*/
 
 // Analog Pin ports
 /*#define   A0_PORT   GPIOA
@@ -123,7 +128,7 @@ typedef enum {
 #define   false   0
 #define   true    1
 
-/* Exported functions ------------------------------------------------------- */
+/* Exported functions ------------------------------------------------------- */  
 void enableClock(uint16_t GPIO_Pin);
 //GPIO_TypeDef *getPort(uint16_t GPIO_Pin);
 
