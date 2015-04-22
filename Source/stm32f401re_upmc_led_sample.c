@@ -13,29 +13,64 @@
   ******************************************************************************
   */
 
-/* Includes ------------------------------------------------------------------*/
+/* Includes ----------------------------------------------------------------- */
 #include "stm32f401re_upmc_led_sample.h"
+
+/* Pin table -------------------------------------------------------------------
+ * LD2 : GPIO_PIN_5
+ * -------------------------------------------------------------------------- */
+
+/* Port table ------------------------------------------------------------------
+ * LD2 : GPIOA
+ * -------------------------------------------------------------------------- */
+
+/* Global variable ---------------------------------------------------------- */
+GPIO_InitTypeDef LED2_InitStruct;
+
+/* Private functions -------------------------------------------------------- */
 /**
   * @brief  ...
   * @param  ...
   * @retval ...
   */
-void configureLed2Pin(void) 
+void configureLedPin(Led_TypeDef led_pin) 
 {
-	enableLed2Clock();	
-	createLed2Struct();
-	initialiseLed2Struct();
+	if (led_pin == GPIO_PIN_5)
+  {
+    enableLedClock(led_pin);	
+	  createLedStruct(led_pin);
+	  initialiseLedStruct(led_pin);
+  }  
 }
 
-/* Private functions ---------------------------------------------------------*/
 /**
   * @brief  ...
   * @param  ...
   * @retval ...
   */
-void enableLed2Clock(void) 
+void enableLedClock(Led_TypeDef led_pin) 
 {
-  __GPIOA_CLK_ENABLE();
+  if (led_pin == GPIO_PIN_5)
+  {
+    __GPIOA_CLK_ENABLE();
+  }  
+}
+
+/**
+  * @brief  ...
+  * @param  ...
+  * @retval ...
+  */  
+GPIO_TypeDef *getPort(Led_TypeDef led_pin) 
+{
+  if (led_pin == GPIO_PIN_5)
+  {
+    return GPIOA;
+  } 
+  else 
+  {
+    return NULL;
+  }  
 }
 
 /**
@@ -43,12 +78,15 @@ void enableLed2Clock(void)
   * @param  ...
   * @retval ...
   */	
-void createLed2Struct(void) 
-{
-	LED2_InitStruct.Pin   = LED2_PIN;
-  LED2_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
-  LED2_InitStruct.Pull  = GPIO_PULLUP;
-  LED2_InitStruct.Speed = GPIO_SPEED_HIGH;	 
+void createLedStruct(Led_TypeDef led_pin) 
+{ 
+  if (led_pin == GPIO_PIN_5) 
+  {
+  	LED2_InitStruct.Pin   = led_pin;
+    LED2_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
+    LED2_InitStruct.Pull  = GPIO_PULLUP;
+    LED2_InitStruct.Speed = GPIO_SPEED_HIGH;	 
+  }
 }			
 
 /**
@@ -56,9 +94,13 @@ void createLed2Struct(void)
   * @param  ...
   * @retval ...
   */
-void initialiseLed2Struct(void) 
+void initialiseLedStruct(Led_TypeDef led_pin) 
 {
-	HAL_GPIO_Init(LED2_PORT, &LED2_InitStruct);
+  if (led_pin == GPIO_PIN_5) 
+  {
+    GPIO_TypeDef *GPIOx = getPort(led_pin);    
+    HAL_GPIO_Init(GPIOx, &LED2_InitStruct);
+  }
 }
 
 
@@ -67,9 +109,12 @@ void initialiseLed2Struct(void)
   * @param  ...
   * @retval ...
   */
-void turnOnLed2(void) 
+void turnOnLed(Led_TypeDef led_pin) 
 {
-	HAL_GPIO_WritePin(LED2_PORT, LED2_PIN, GPIO_PIN_SET);
+  if (led_pin == GPIO_PIN_5) 
+  {
+    HAL_GPIO_WritePin(GPIOA, led_pin, GPIO_PIN_SET);
+  }
 }
 
 /**
@@ -77,9 +122,12 @@ void turnOnLed2(void)
   * @param  ...
   * @retval ...
   */
-void turnOffLed2(void) 
+void turnOffLed(Led_TypeDef led_pin) 
 {
-	HAL_GPIO_WritePin(LED2_PORT, LED2_PIN, GPIO_PIN_RESET);
+  if (led_pin == GPIO_PIN_5) 
+  {
+    HAL_GPIO_WritePin(GPIOA, led_pin, GPIO_PIN_RESET);
+  }
 }
 
 /************************ (C) COPYRIGHT UPMC *******************END OF FILE****/

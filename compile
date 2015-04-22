@@ -9,7 +9,6 @@ arm-none-eabi-gcc $CFLAGS -c Startup/startup_stm32f401xe.s -o Object/startup.o
 arm-none-eabi-gcc $CFLAGS -c Source/main.c -o Object/main.o
 arm-none-eabi-gcc $CFLAGS -c Source/stm32f401re_upmc_led_sample.c -o Object/stm32f401re_upmc_led_sample.o
 arm-none-eabi-gcc $CFLAGS -c Source/stm32f401re_upmc_digitalIn.c -o Object/stm32f401re_upmc_digitalIn.o
-arm-none-eabi-gcc $CFLAGS -c Source/stm32f401re_upmc_config.c -o Object/stm32f401re_upmc_config.o
 arm-none-eabi-gcc $CFLAGS -c Source/stm32f4xx_hal_gpio.c -o Object/stm32f4xx_hal_gpio.o
 arm-none-eabi-gcc $CFLAGS -c Source/stm32f4xx_hal_rcc.c -o Object/stm32f4xx_hal_rcc.o
 arm-none-eabi-gcc $CFLAGS -c Source/stm32f4xx_it.c -o Object/stm32f4xx_it.o

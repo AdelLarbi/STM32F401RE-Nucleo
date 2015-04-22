@@ -13,7 +13,7 @@
   ******************************************************************************
   */
 
-/* Define to prevent recursive inclusion -------------------------------------*/
+/* Define to prevent recursive inclusion ------------------------------------ */
 #ifndef __STM32F401RE_UPMC_LED_SAMPLE_H
 #define __STM32F401RE_UPMC_LED_SAMPLE_H
 
@@ -21,25 +21,26 @@
  extern "C" {
 #endif
 
-/* Includes ------------------------------------------------------------------*/
+/* Includes ----------------------------------------------------------------- */
 #include "stm32f4xx_hal_gpio.h"
 #include "stm32f4xx_hal_rcc.h"
 
-/* Exported types ------------------------------------------------------------*/
-GPIO_InitTypeDef LED2_InitStruct;
-
-/* Exported macro ------------------------------------------------------------*/
-#define LED2_PIN  GPIO_PIN_5
-#define LED2_PORT GPIOA
+/* Exported types ----------------------------------------------------------- */
+typedef enum 
+{
+  LD2 = GPIO_PIN_5
+} Led_TypeDef;
 
 /* Exported functions ------------------------------------------------------- */
-void configureLed2Pin(void);
-void enableLed2Clock(void);
-void createLed2Struct(void);
-void initialiseLed2Struct(void);
+void configureLedPin(Led_TypeDef led_pin);
+void enableLedClock(Led_TypeDef led_pin);
+void createLedStruct(Led_TypeDef led_pin);
+void initialiseLedStruct(Led_TypeDef led_pin);
 
-void turnOnLed2(void);
-void turnOffLed2(void);
+GPIO_TypeDef *getPort(Led_TypeDef led_pin);
+
+void turnOnLed(Led_TypeDef led_pin);
+void turnOffLed(Led_TypeDef led_pin);
 
 #ifdef __cplusplus
 }

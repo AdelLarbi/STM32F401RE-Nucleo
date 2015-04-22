@@ -13,10 +13,10 @@
   ******************************************************************************
   */
 
-/* Includes ------------------------------------------------------------------*/
+/* Includes ----------------------------------------------------------------- */
 #include "stm32f401re_upmc_digitalIn.h"
 
-/* Private functions ---------------------------------------------------------*/
+/* Private functions -------------------------------------------------------- */
 
 /**
   * @brief Initializes a default digital-in 
@@ -25,9 +25,51 @@
   * @retval ...
   */
 void initDigitalIn(uint16_t GPIO_Pin) {	
-	enableClock(GPIO_Pin);	
+	enableDigitalInClock(GPIO_Pin);	
 	createStruct(GPIO_Pin);
 	initialiseStruct(GPIO_Pin);
+}
+	
+/**
+  * @brief  ...
+  * @param  ...
+  * @retval ...
+  */
+void enableDigitalInClock(uint16_t GPIO_Pin) {
+
+	switch (GPIO_Pin) {
+
+		case GPIO_PIN_0 :
+		case GPIO_PIN_1 :
+		case GPIO_PIN_2 :
+		case GPIO_PIN_3 :
+		case GPIO_PIN_4 : {
+			__GPIOB_CLK_ENABLE(); // NOT B; to check!
+			break;
+		}
+
+		case GPIO_PIN_6 :
+		case GPIO_PIN_7 :
+		case GPIO_PIN_8 :
+		case GPIO_PIN_9 :
+		case GPIO_PIN_10 :
+		case GPIO_PIN_11 :
+		case GPIO_PIN_12 : {
+			__GPIOB_CLK_ENABLE(); // NOT B; to check!
+			break;
+		}
+
+		case USER_BUTTON_PIN : {
+			__GPIOC_CLK_ENABLE();
+			break;
+		}
+
+		case GPIO_PIN_14 :
+		case GPIO_PIN_15 : {
+			__GPIOB_CLK_ENABLE(); // NOT B; to check!
+			break;
+		}
+	}	
 }
 	
 /**

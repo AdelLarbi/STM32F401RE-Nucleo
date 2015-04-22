@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file    Pstl/Include/stm32f401re_upmc_digitalIn.h 
-  * @author  Master1 Team
+  * @author  Adel LARBI (adel.larbi@etu.upmc.fr)
   * @version V1.0.0
   * @date    ??-December-2015
   * @brief   Custom config for ???.c module
@@ -27,7 +27,12 @@
 /* Exported types ------------------------------------------------------------*/
 GPIO_InitTypeDef GPIO_InitStruct;
 
+/* Exported macro ----------------------------------------------------------- */
+#define USER_BUTTON_PIN    GPIO_PIN_13
+#define USER_BUTTON_PORT   GPIOC
+
 /* Exported functions ------------------------------------------------------- */
+void enableDigitalInClock(uint16_t GPIO_Pin);
 void initDigitalIn(uint16_t GPIO_Pin);
 void createStruct(uint16_t GPIO_Pin);
 void initialiseStruct(uint16_t GPIO_Pin);
