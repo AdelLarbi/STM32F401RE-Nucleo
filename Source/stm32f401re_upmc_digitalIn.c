@@ -16,18 +16,61 @@
 /* Includes ----------------------------------------------------------------- */
 #include "stm32f401re_upmc_digitalIn.h"
 
-/* Private functions -------------------------------------------------------- */
+/* Pin table -------------------------------------------------------------------
+ * USER  :  GPIO_PIN_13
+ * D0    :  GPIO_PIN_3
+ * D1    :  GPIO_PIN_2
+ * D2    :  GPIO_PIN_10
+ * D3    :  GPIO_PIN_3
+ * D4    :  GPIO_PIN_5
+ * D5    :  GPIO_PIN_4
+ * D6    :  GPIO_PIN_10
+ * D7    :  GPIO_PIN_8
+ * D8    :  GPIO_PIN_9
+ * D9    :  GPIO_PIN_7
+ * D10   :  GPIO_PIN_6
+ * D11   :  GPIO_PIN_7
+ * D12   :  GPIO_PIN_6
+ * D13   :  GPIO_PIN_5
+ * D14   :  GPIO_PIN_9
+ * D15   :  GPIO_PIN_8
+ * -------------------------------------------------------------------------- */
 
+/* Port table ------------------------------------------------------------------
+ * USER :  GPIOC
+ * D0   :  GPIOA
+ * D1   :  GPIO?
+ * D2   :  GPIO?
+ * D3   :  GPIO?
+ * D4   :  GPIO?
+ * D5   :  GPIO?
+ * D6   :  GPIO?
+ * D7   :  GPIO?
+ * D8   :  GPIO?
+ * D9   :  GPIO?
+ * D10  :  GPIO?
+ * D11  :  GPIO?
+ * D12  :  GPIO?
+ * D13  :  GPIO?
+ * D14  :  GPIO?
+ * D15  :  GPIO?
+ * -------------------------------------------------------------------------- */
+
+/* Private functions -------------------------------------------------------- */
 /**
   * @brief Initializes a default digital-in 
   * @GPIO_Pin: specifies the port bit to initialize. Possible values: 
   * 			  PINx, USER_BUTTON or ALLPIN, where x[0..15].
   * @retval ...
   */
-void initDigitalIn(uint16_t GPIO_Pin) {	
-	enableDigitalInClock(GPIO_Pin);	
-	createStruct(GPIO_Pin);
-	initialiseStruct(GPIO_Pin);
+void initDigitalIn(Digital_TypeDef digitalIn_pin) 
+{	
+	if (true) 
+	{
+		enableClock(digitalIn_pin);	
+		createStruct(digitalIn_pin);
+		initialiseStruct(digitalIn_pin);
+	}
 }
 	
 /**
@@ -35,54 +78,91 @@ void initDigitalIn(uint16_t GPIO_Pin) {
   * @param  ...
   * @retval ...
   */
-void enableDigitalInClock(uint16_t GPIO_Pin) {
+void enableClock(Digital_TypeDef digitalIn_pin) 
+{
+	Port_TypeDef GPIOx = getDigitalInPort(digitalIn_pin);
 
-	switch (GPIO_Pin) {
-
-		case GPIO_PIN_0 :
-		case GPIO_PIN_1 :
-		case GPIO_PIN_2 :
-		case GPIO_PIN_3 :
-		case GPIO_PIN_4 : {
-			__GPIOB_CLK_ENABLE(); // NOT B; to check!
+	switch (GPIOx) 
+	{
+		case Port_A :
+		{
+			__GPIOA_CLK_ENABLE();
 			break;
 		}
-
-		case GPIO_PIN_6 :
-		case GPIO_PIN_7 :
-		case GPIO_PIN_8 :
-		case GPIO_PIN_9 :
-		case GPIO_PIN_10 :
-		case GPIO_PIN_11 :
-		case GPIO_PIN_12 : {
-			__GPIOB_CLK_ENABLE(); // NOT B; to check!
+		case Port_B :
+		{
+			__GPIOB_CLK_ENABLE();
 			break;
 		}
-
-		case USER_BUTTON_PIN : {
+		case Port_C :
+		{
 			__GPIOC_CLK_ENABLE();
 			break;
 		}
-
-		case GPIO_PIN_14 :
-		case GPIO_PIN_15 : {
-			__GPIOB_CLK_ENABLE(); // NOT B; to check!
-			break;
-		}
-	}	
+	}
 }
-	
+
+/**
+  * @brief  ...
+  * @param  ...
+  * @retval ...
+  */  
+Port_TypeDef getDigitalInPort(Digital_TypeDef digitalIn_pin) 
+{
+  	switch (digitalIn_pin) 
+  	{
+		case D0 : 
+		case D1 : 
+		case D2 :
+		case D7 : 
+		case D8 : 
+		case D11 :
+		case D12 :
+		case D13 :
+		{			
+			return Port_A;			
+		}
+
+		case D3 :
+		case D4 :
+		case D5 : 
+		case D6 : 
+		case D10 : 
+		case D14 :
+		case D15 :
+		{			
+			return Port_B;
+		}
+
+		case D9 :
+		case USER : 
+		{
+			return Port_C;
+		}
+
+		default :
+		{
+			return -1;
+		}
+	}		
+}
+
 /**
   * @brief ...
   * @GPIO_Pin: specifies the port bit to initialize. Possible values: 
   * 			  PINx, USER_BUTTON or ALLPIN, where x[0..15].
   * @retval ...
   */	
-void createStruct(uint16_t GPIO_Pin) {
-	GPIO_InitStruct.Pin   = GPIO_Pin;
-    GPIO_InitStruct.Mode  = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull  = GPIO_PULLDOWN;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FAST;	
+void createStruct(Digital_TypeDef digitalIn_pin) 
+{
+	if (true) 
+	{
+		uint16_t GPIOx_pin = getDigitalInPin(digitalIn_pin);
+		GPIO_InitStruct.Pin   = GPIOx_pin;
+	    GPIO_InitStruct.Mode  = GPIO_MODE_INPUT;
+	    GPIO_InitStruct.Pull  = GPIO_PULLDOWN;
+	    GPIO_InitStruct.Speed = GPIO_SPEED_FAST;	
+	}
 }			
 
 /**
@@ -91,48 +171,28 @@ void createStruct(uint16_t GPIO_Pin) {
   * 			  PINx, USER_BUTTON or ALLPIN, where x[0..15].
   * @retval ...
   */
-void initialiseStruct(uint16_t GPIO_Pin) {		
+void initialiseStruct(Digital_TypeDef digitalIn_pin) 
+{		
+	Port_TypeDef GPIOx = getDigitalInPort(digitalIn_pin);
 
-	switch (GPIO_Pin) {
-
-		/*case D0_PIN : 
-		case D1_PIN : 
-		case D2_PIN :
-		case D7_PIN : 
-		case D8_PIN : 
-		case D11_PIN :
-		case D12_PIN :
-		case D13_PIN : 
-		case A0_PIN : 
-		case A1_PIN : 
-		case A2_PIN : {			
+	switch (GPIOx) 
+	{
+		case Port_A :
+		{
 			HAL_GPIO_Init(GPIOA, &GPIO_InitStruct); 
 			break;
 		}
-
-		case D3_PIN :
-		case D4_PIN :
-		case D5_PIN : 
-		case D6_PIN : 
-		case D10_PIN : 
-		case D14_PIN :
-		case D15_PIN : 
-		case A3_PIN : 
-		//ou 
-		//case A4_PIN :
-		//case A5_PIN :  {			
-		//	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct); 
-		//	break;
-		//}
-
-		case D9_PIN : 
-		case A4_PIN :
-		case A5_PIN :*/ 
-		case USER_BUTTON_PIN : {
+		case Port_B :
+		{
+			HAL_GPIO_Init(GPIOB, &GPIO_InitStruct); 
+			break;
+		}
+		case Port_C :
+		{
 			HAL_GPIO_Init(GPIOC, &GPIO_InitStruct); 
 			break;
 		}
-	}		
+	}
 }
 
 /**
@@ -142,46 +202,92 @@ void initialiseStruct(uint16_t GPIO_Pin) {
   * Returns: 0 if the pin is active, 1 else.
   * @retval ...
   */
-GPIO_PinState isActive(uint16_t GPIO_Pin) {
+GPIO_PinState isActive(Digital_TypeDef digitalIn_pin) 
+{
+	Port_TypeDef GPIOx_port = getDigitalInPort(digitalIn_pin);
+	uint16_t GPIOx_pin = getDigitalInPin(digitalIn_pin);
 
-	switch (GPIO_Pin) {
-
-		/*case D0_PIN : 
-		case D1_PIN : 
-		case D2_PIN :
-		case D7_PIN : 
-		case D8_PIN : 
-		case D11_PIN :
-		case D12_PIN :
-		case D13_PIN : 
-		case A0_PIN : 
-		case A1_PIN : 
-		case A2_PIN : {
-			return !HAL_GPIO_ReadPin(GPIOA, GPIO_Pin);						
+	switch (GPIOx_port) 
+	{
+		case Port_A :
+		{
+			return !HAL_GPIO_ReadPin(GPIOA, GPIOx_pin);			
 		}
-
-		case D3_PIN :
-		case D4_PIN :
-		case D5_PIN : 
-		case D6_PIN : 
-		case D10_PIN : 
-		case D14_PIN :
-		case D15_PIN :
-		case A3_PIN : 
-		// ou 
-		//case A4_PIN :
-		//case A5_PIN : */ /*{
-		//	return !HAL_GPIO_ReadPin(GPIOB, GPIO_Pin);			
-		//}
-		
-		case D9_PIN : 
-		case A4_PIN :
-		case A5_PIN : */
-		case USER_BUTTON_PIN : {
-			return !HAL_GPIO_ReadPin(GPIOC, GPIO_Pin);			
-		}		
+		case Port_B :
+		{
+			return !HAL_GPIO_ReadPin(GPIOB, GPIOx_pin);
+		}
+		case Port_C :
+		{
+			return !HAL_GPIO_ReadPin(GPIOC, GPIOx_pin);
+		}
+		default : 
+		{
+			return -1;
+		}
 	}
-	return 0;
-}
+}	
 
+/**
+  * @brief  ...
+  * @param  ...
+  * @retval ...
+  */  
+uint16_t getDigitalInPin(Digital_TypeDef digitalIn_pin) 
+{
+  	switch (digitalIn_pin) 
+  	{  	
+  		case USER :
+		{
+			return GPIO_PIN_13;
+		}
+		case D0 :
+		case D3 :
+		{
+			return GPIO_PIN_3;
+		} 
+		case D1 :
+		{
+			return GPIO_PIN_2;
+		}  
+		case D2 :
+		case D6 :
+		{
+			return GPIO_PIN_10;
+		}
+		case D4 : 
+		case D13 :
+		{
+			return GPIO_PIN_5;
+		} 
+		case D5 :
+		{
+			return GPIO_PIN_4;
+		}
+		case D7 :
+		case D15 :
+		{
+			return GPIO_PIN_8;
+		} 
+		case D8 :
+		case D14 :
+		{
+			return GPIO_PIN_9;
+		} 
+		case D9 :
+		case D11 :
+		{
+			return GPIO_PIN_7;
+		} 
+		case D10 :
+		case D12 :
+		{
+			return GPIO_PIN_6;
+		}
+		default :
+		{
+			return 99;
+		}
+	}		
+}
 /************************ (C) COPYRIGHT UPMC *******************END OF FILE****/

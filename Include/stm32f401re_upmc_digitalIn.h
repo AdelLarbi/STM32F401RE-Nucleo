@@ -27,16 +27,14 @@
 /* Exported types ------------------------------------------------------------*/
 GPIO_InitTypeDef GPIO_InitStruct;
 
-/* Exported macro ----------------------------------------------------------- */
-#define USER_BUTTON_PIN    GPIO_PIN_13
-#define USER_BUTTON_PORT   GPIOC
-
 /* Exported functions ------------------------------------------------------- */
-void enableDigitalInClock(uint16_t GPIO_Pin);
-void initDigitalIn(uint16_t GPIO_Pin);
-void createStruct(uint16_t GPIO_Pin);
-void initialiseStruct(uint16_t GPIO_Pin);
-GPIO_PinState isActive(uint16_t GPIO_Pin);
+void enableClock(Digital_TypeDef digitalIn_pin);
+void initDigitalIn(Digital_TypeDef digitalIn_pin);
+void createStruct(Digital_TypeDef digitalIn_pin);
+void initialiseStruct(Digital_TypeDef digitalIn_pin);
+uint16_t getDigitalInPin(Digital_TypeDef digitalIn_pin); 
+Port_TypeDef getDigitalInPort(Digital_TypeDef digitalIn_pin);
+GPIO_PinState isActive(Digital_TypeDef digitalIn_pin);
 
 #ifdef __cplusplus
 }

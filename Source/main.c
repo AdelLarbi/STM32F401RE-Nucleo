@@ -28,10 +28,10 @@
 int main(void) {
 		
 	configureLedPin(LD2);    
-    initDigitalIn(USER_BUTTON_PIN);
+    initDigitalIn(USER);
 
 	while (true) {
-		if (isActive(USER_BUTTON_PIN)) {								  			
+		if (isActive(USER)) {
 			turnOnLed(LD2);
 		} else {
 			turnOffLed(LD2);

@@ -27,31 +27,35 @@
 #include "stm32f4xx_it.h"
 
 /* Exported types ----------------------------------------------------------- */
+
 typedef enum 
-{  
-  USER  =  GPIO_PIN_13
-} Button_TypeDef;
+{ 
+  D0   =  0,
+  D1   =  1,
+  D2   =  2,
+  D3   =  3,
+  D4   =  4,
+  D5   =  5,
+  D6   =  6,
+  D7   =  7,
+  D8   =  8,
+  D9   =  9,
+  D10  =  10,
+  D11  =  11,
+  D12  =  12,
+  D13  =  13,
+  D14  =  14,
+  D15  =  15,  
+  USER =  16
+} Digital_TypeDef;
 
 
 typedef enum 
 {
-  D0   =  GPIO_PIN_3,
-  D1   =  GPIO_PIN_2,
-  D2   =  GPIO_PIN_10,
-  D3   =  GPIO_PIN_3,
-  D4   =  GPIO_PIN_5,
-  D5   =  GPIO_PIN_4,
-  D6   =  GPIO_PIN_10,
-  D7   =  GPIO_PIN_8,
-  D8   =  GPIO_PIN_9,
-  D9   =  GPIO_PIN_7,
-  D10  =  GPIO_PIN_6,
-  D11  =  GPIO_PIN_7,
-  D12  =  GPIO_PIN_6,
-  D13  =  GPIO_PIN_5,
-  D14  =  GPIO_PIN_9,
-  D15  =  GPIO_PIN_8  
-} Digital_TypeDef;
+  Port_A  =  0,
+  Port_B  =  1,
+  Port_C  =  2,
+} Port_TypeDef;
 
 /* Exported macro ----------------------------------------------------------- */
 #define false   0

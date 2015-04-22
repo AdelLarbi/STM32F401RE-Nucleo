@@ -35,7 +35,7 @@ GPIO_InitTypeDef LED2_InitStruct;
   */
 void configureLedPin(Led_TypeDef led_pin) 
 {
-	if (led_pin == GPIO_PIN_5)
+	if (led_pin == LD2)
   {
     enableLedClock(led_pin);	
 	  createLedStruct(led_pin);
@@ -50,26 +50,9 @@ void configureLedPin(Led_TypeDef led_pin)
   */
 void enableLedClock(Led_TypeDef led_pin) 
 {
-  if (led_pin == GPIO_PIN_5)
+  if (led_pin == LD2)
   {
     __GPIOA_CLK_ENABLE();
-  }  
-}
-
-/**
-  * @brief  ...
-  * @param  ...
-  * @retval ...
-  */  
-GPIO_TypeDef *getPort(Led_TypeDef led_pin) 
-{
-  if (led_pin == GPIO_PIN_5)
-  {
-    return GPIOA;
-  } 
-  else 
-  {
-    return NULL;
   }  
 }
 
@@ -80,7 +63,7 @@ GPIO_TypeDef *getPort(Led_TypeDef led_pin)
   */	
 void createLedStruct(Led_TypeDef led_pin) 
 { 
-  if (led_pin == GPIO_PIN_5) 
+  if (led_pin == LD2) 
   {
   	LED2_InitStruct.Pin   = led_pin;
     LED2_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
@@ -96,10 +79,9 @@ void createLedStruct(Led_TypeDef led_pin)
   */
 void initialiseLedStruct(Led_TypeDef led_pin) 
 {
-  if (led_pin == GPIO_PIN_5) 
-  {
-    GPIO_TypeDef *GPIOx = getPort(led_pin);    
-    HAL_GPIO_Init(GPIOx, &LED2_InitStruct);
+  if (led_pin == LD2) 
+  {    
+    HAL_GPIO_Init(GPIOA, &LED2_InitStruct);
   }
 }
 
@@ -111,7 +93,7 @@ void initialiseLedStruct(Led_TypeDef led_pin)
   */
 void turnOnLed(Led_TypeDef led_pin) 
 {
-  if (led_pin == GPIO_PIN_5) 
+  if (led_pin == LD2) 
   {
     HAL_GPIO_WritePin(GPIOA, led_pin, GPIO_PIN_SET);
   }
@@ -124,7 +106,7 @@ void turnOnLed(Led_TypeDef led_pin)
   */
 void turnOffLed(Led_TypeDef led_pin) 
 {
-  if (led_pin == GPIO_PIN_5) 
+  if (led_pin == LD2) 
   {
     HAL_GPIO_WritePin(GPIOA, led_pin, GPIO_PIN_RESET);
   }

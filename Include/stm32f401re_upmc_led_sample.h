@@ -37,8 +37,6 @@ void enableLedClock(Led_TypeDef led_pin);
 void createLedStruct(Led_TypeDef led_pin);
 void initialiseLedStruct(Led_TypeDef led_pin);
 
-GPIO_TypeDef *getPort(Led_TypeDef led_pin);
-
 void turnOnLed(Led_TypeDef led_pin);
 void turnOffLed(Led_TypeDef led_pin);
 
