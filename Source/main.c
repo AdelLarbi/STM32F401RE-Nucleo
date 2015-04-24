@@ -19,7 +19,6 @@
 #include "stm32f401re_upmc_led_sample.h"
 
 /* Private functions ---------------------------------------------------------*/
-
 /**
   * @brief  Main program
   * @param  None
@@ -31,7 +30,7 @@ int main(void) {
     initDigitalIn(USER);
 
 	while (true) {
-		if (isActive(USER)) {
+		if (isActiveDigitalIn(USER)) {
 			turnOnLed(LD2);
 		} else {
 			turnOffLed(LD2);

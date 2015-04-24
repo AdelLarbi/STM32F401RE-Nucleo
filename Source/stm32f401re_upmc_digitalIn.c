@@ -16,7 +16,7 @@
 /* Includes ----------------------------------------------------------------- */
 #include "stm32f401re_upmc_digitalIn.h"
 
-/* Pin table -------------------------------------------------------------------
+/* Digital Pin Table -----------------------------------------------------------
  * USER  :  GPIO_PIN_13
  * D0    :  GPIO_PIN_3
  * D1    :  GPIO_PIN_2
@@ -36,24 +36,24 @@
  * D15   :  GPIO_PIN_8
  * -------------------------------------------------------------------------- */
 
-/* Port table ------------------------------------------------------------------
+/* Digital Port Table ----------------------------------------------------------
  * USER :  GPIOC
  * D0   :  GPIOA
- * D1   :  GPIO?
- * D2   :  GPIO?
- * D3   :  GPIO?
- * D4   :  GPIO?
- * D5   :  GPIO?
- * D6   :  GPIO?
- * D7   :  GPIO?
- * D8   :  GPIO?
- * D9   :  GPIO?
- * D10  :  GPIO?
- * D11  :  GPIO?
- * D12  :  GPIO?
- * D13  :  GPIO?
- * D14  :  GPIO?
- * D15  :  GPIO?
+ * D1   :  GPIOA
+ * D2   :  GPIOA
+ * D3   :  GPIOB
+ * D4   :  GPIOB
+ * D5   :  GPIOB
+ * D6   :  GPIOB
+ * D7   :  GPIOA
+ * D8   :  GPIOA
+ * D9   :  GPIOC
+ * D10  :  GPIOB
+ * D11  :  GPIOA
+ * D12  :  GPIOA
+ * D13  :  GPIOA
+ * D14  :  GPIOB
+ * D15  :  GPIOB
  * -------------------------------------------------------------------------- */
 
 /* Private functions -------------------------------------------------------- */
@@ -122,7 +122,6 @@ Port_TypeDef getDigitalInPort(Digital_TypeDef digitalIn_pin)
 		{			
 			return Port_A;			
 		}
-
 		case D3 :
 		case D4 :
 		case D5 : 
@@ -133,13 +132,11 @@ Port_TypeDef getDigitalInPort(Digital_TypeDef digitalIn_pin)
 		{			
 			return Port_B;
 		}
-
 		case D9 :
 		case USER : 
 		{
 			return Port_C;
 		}
-
 		default :
 		{
 			return -1;
@@ -202,7 +199,7 @@ void initialiseStruct(Digital_TypeDef digitalIn_pin)
   * Returns: 0 if the pin is active, 1 else.
   * @retval ...
   */
-GPIO_PinState isActive(Digital_TypeDef digitalIn_pin) 
+GPIO_PinState isActiveDigitalIn(Digital_TypeDef digitalIn_pin) 
 {
 	Port_TypeDef GPIOx_port = getDigitalInPort(digitalIn_pin);
 	uint16_t GPIOx_pin = getDigitalInPin(digitalIn_pin);

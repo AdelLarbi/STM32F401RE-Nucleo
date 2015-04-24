@@ -34,7 +34,7 @@ void createStruct(Digital_TypeDef digitalIn_pin);
 void initialiseStruct(Digital_TypeDef digitalIn_pin);
 uint16_t getDigitalInPin(Digital_TypeDef digitalIn_pin); 
 Port_TypeDef getDigitalInPort(Digital_TypeDef digitalIn_pin);
-GPIO_PinState isActive(Digital_TypeDef digitalIn_pin);
+GPIO_PinState isActiveDigitalIn(Digital_TypeDef digitalIn_pin);
 
 #ifdef __cplusplus
 }
