@@ -57,6 +57,9 @@ typedef enum
   Port_C  =  2,
 } Port_TypeDef;
 
+
+GPIO_InitTypeDef GPIO_InitStruct;
+
 /* Exported macro ----------------------------------------------------------- */
 #define false   0
 #define true    1

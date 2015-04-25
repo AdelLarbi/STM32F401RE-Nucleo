@@ -14,6 +14,7 @@
   */
 
 /* Includes ----------------------------------------------------------------- */
+#include "stm32f401re_upmc_private_digitalIn.h"
 #include "stm32f401re_upmc_digitalIn.h"
 
 /* Digital Pin Table -----------------------------------------------------------
@@ -78,7 +79,7 @@ void initDigitalIn(Digital_TypeDef digitalIn_pin)
   * @param  ...
   * @retval ...
   */
-void enableClock(Digital_TypeDef digitalIn_pin) 
+static void enableClock(Digital_TypeDef digitalIn_pin) 
 {
 	Port_TypeDef GPIOx = getDigitalInPort(digitalIn_pin);
 
@@ -107,7 +108,7 @@ void enableClock(Digital_TypeDef digitalIn_pin)
   * @param  ...
   * @retval ...
   */  
-Port_TypeDef getDigitalInPort(Digital_TypeDef digitalIn_pin) 
+static Port_TypeDef getDigitalInPort(Digital_TypeDef digitalIn_pin) 
 {
   	switch (digitalIn_pin) 
   	{
@@ -150,7 +151,7 @@ Port_TypeDef getDigitalInPort(Digital_TypeDef digitalIn_pin)
   * 			  PINx, USER_BUTTON or ALLPIN, where x[0..15].
   * @retval ...
   */	
-void createStruct(Digital_TypeDef digitalIn_pin) 
+static void createStruct(Digital_TypeDef digitalIn_pin) 
 {
 	if (true) 
 	{
@@ -168,7 +169,7 @@ void createStruct(Digital_TypeDef digitalIn_pin)
   * 			  PINx, USER_BUTTON or ALLPIN, where x[0..15].
   * @retval ...
   */
-void initialiseStruct(Digital_TypeDef digitalIn_pin) 
+static void initialiseStruct(Digital_TypeDef digitalIn_pin) 
 {		
 	Port_TypeDef GPIOx = getDigitalInPort(digitalIn_pin);
 
@@ -230,7 +231,7 @@ GPIO_PinState isActiveDigitalIn(Digital_TypeDef digitalIn_pin)
   * @param  ...
   * @retval ...
   */  
-uint16_t getDigitalInPin(Digital_TypeDef digitalIn_pin) 
+static uint16_t getDigitalInPin(Digital_TypeDef digitalIn_pin) 
 {
   	switch (digitalIn_pin) 
   	{  	

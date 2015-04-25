@@ -28,7 +28,7 @@ int main(void) {
 		
 	configureLedPin(LD2);    
     initDigitalIn(USER);
-
+    
 	while (true) {
 		if (isActiveDigitalIn(USER)) {
 			turnOnLed(LD2);

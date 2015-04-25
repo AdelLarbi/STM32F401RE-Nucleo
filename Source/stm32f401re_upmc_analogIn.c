@@ -17,7 +17,6 @@
 #include "stm32f401re_upmc_digitalIn.h"
 
 /* Private functions ---------------------------------------------------------*/
-
 /**
   * @brief Initializes a default digital-in 
   * @GPIO_Pin: specifies the port bit to initialize. Possible values: 
